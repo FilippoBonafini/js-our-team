@@ -126,6 +126,9 @@ createDOM(member);
 // MIO BONUS PERSONALE
 userAddButton.addEventListener('click', function () {
     hiddenScreen.classList.remove('hidden');
+    // RESETTO I CAMPI 
+    userInputName.value = ''
+    userInputName.classList.remove('wrong')
 })
 
 userCloseScreen.addEventListener('click', function () {
@@ -151,6 +154,7 @@ userConfermeButton.addEventListener('click', function () {
             presenza=true;
             console.log('utente già presente o assente')
             i=member.length
+            userInputName.classList.add('wrong')
         }else{
             presenza=false;
         }

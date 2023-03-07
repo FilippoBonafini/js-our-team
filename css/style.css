@@ -166,6 +166,14 @@ text-align: center;
     font-size: 20px;
 }
 
+#hiddenForm input.wrong{
+    border: 2px solid rgb(228, 71, 71);
+    background-color: rgb(250, 163, 163);
+}
+#hiddenForm input.wrong:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(250, 163, 163) inset;
+  }
+
 #hiddenForm button{
     margin-top: 70px;
     cursor: pointer;
@@ -185,4 +193,18 @@ text-align: center;
 
 #hiddenForm .close:hover{
     color: rgb(213, 40, 40);
+}
+
+#addMember{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#addMember:hover{
+    background-color: white;
+    color:rgb(87, 87, 227) ;
+    cursor: pointer;
 }
