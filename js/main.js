@@ -72,8 +72,8 @@ function createDOM(arrayName) {
 }
 
 // reset dom 
-function myReset(){
-    container.innerHTML=('')
+function myReset() {
+    container.innerHTML = ('')
 }
 
 // MAIN 
@@ -124,21 +124,46 @@ createDOM(member);
 
 
 // MIO BONUS PERSONALE
-userAddButton.addEventListener('click',function(){
+userAddButton.addEventListener('click', function () {
     hiddenScreen.classList.remove('hidden');
 })
 
-userCloseScreen.addEventListener('click', function(){
+userCloseScreen.addEventListener('click', function () {
     hiddenScreen.classList.add('hidden');
-} )
+})
 
-userConfermeButton.addEventListener('click',function(){
+userConfermeButton.addEventListener('click', function () {
+
     const newObject = {
         nome: userInputName.value,
         ruolo: userInputRole.value,
         urlFoto: 'default.png'
     }
-    member.push(newObject)
-    hiddenScreen.classList.add('hidden');
-    createDOM(member);
+
+
+    const newName = newObject.nome;
+    let presenza;
+
+    // VALIDAZIONE DATI 
+    for (let i = 0; i < member.length; i++) {
+        
+        if(newName===member[i].nome || newName===''){
+            presenza=true;
+            console.log('utente già presente o assente')
+            i=member.length
+        }else{
+            presenza=false;
+        }
+    }
+
+    if (presenza === false) {
+        member.push(newObject)
+        hiddenScreen.classList.add('hidden');
+        createDOM(member);
+    }
+
+
+
+
+
 })
