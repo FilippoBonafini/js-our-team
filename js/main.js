@@ -1,24 +1,42 @@
 'use strict';
 // FUNCTION 
 
-// funzione che crea una card e la appende nel dom 
-function myCreateCard(cardClass, htmlElement, doveInserire) {
+// funzione che crea un elemento e lo appende nel dom 
+function myCreateElement(classe, htmlElement, doveInserire) {
     const element = document.createElement(htmlElement);
-    element.classList.add(cardClass);
+    element.classList.add(classe);
     doveInserire.append(element);
+    return element;
 }
 
-// Funzione che scorre un array di oggetti
+// funzione che crea la struttura delle card 
+function myCreateCard(componente,chiave,contenuto){
+   if (chiave === 'nome'){
+    const element = myCreateElement('nomeCard', 'div', componente);
+    element.innerHTML = (contenuto)
+   } else if (chiave === 'ruolo'){
+    const element = myCreateElement('ruoloCard', 'div', componente)
+    element.innerHTML = (contenuto)
+   } else if(chiave === 'urlFoto'){
+    const element = myCreateElement('fotoCard', 'div', componente)
+    element.innerHTML = (contenuto)
+   }
+}
+
+// Funzione che crea il dom
 function createDOM(arrayName) {
     for (let i = 0; i < arrayName.length; i++) {
         const oggetto = arrayName[i];
+
         // richiamo la funzione per creare le card 
-        myCreateCard('card', 'div', container);
+        const element = myCreateElement('card', 'div', container);
+        console.log(element)
 
         // esegue un azione ad ogni informazione di ogni oggetto
         console.log('ECCO LE INFORMAZIONI DI: ' + oggetto.nome);
         for (let key in oggetto) {
             console.log(key + ':  ' + oggetto[key]);
+            myCreateCard(element,key, oggetto[key])
         }
         console.log('');
     }
