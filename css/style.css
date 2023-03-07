@@ -3,3 +3,41 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header{
+    height: 100px;
+    background-color: yellow;
+    align-items: flex-start;
+}
+
+main{
+    flex-grow: 1;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container{
+    width: 1200px;
+    background-color: red;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#container .card{
+    width: calc(100% / 3 - 30px);
+    height: 400px;
+    background-color: blue;
+}

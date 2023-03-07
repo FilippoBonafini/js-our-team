@@ -1,4 +1,33 @@
 'use strict';
+// FUNCTION 
+
+// funzione che crea una card e la appende nel dom 
+function myCreateCard(cardClass, htmlElement, doveInserire) {
+    const element = document.createElement(htmlElement);
+    element.classList.add(cardClass);
+    doveInserire.append(element);
+}
+
+// Funzione che scorre un array di oggetti
+function createDOM(arrayName) {
+    for (let i = 0; i < arrayName.length; i++) {
+        const oggetto = arrayName[i];
+        // richiamo la funzione per creare le card 
+        myCreateCard('card', 'div', container);
+
+        // esegue un azione ad ogni informazione di ogni oggetto
+        console.log('ECCO LE INFORMAZIONI DI: ' + oggetto.nome);
+        for (let key in oggetto) {
+            console.log(key + ':  ' + oggetto[key]);
+        }
+        console.log('');
+    }
+}
+
+
+
+// MAIN 
+const container = document.getElementById('container');
 
 const member = [
     {
@@ -33,11 +62,4 @@ const member = [
     }
 ]
 
-for (let i = 0; i < member.length; i++) {
-    const oggetto = member[i];
-    console.log('ECCO LE INFORMAZIONI DI: ' + oggetto.nome);
-    for (let key in oggetto) {
-        console.log(key+':  '+oggetto[key]);
-    }
-    console.log('');
-}
+createDOM(member);
