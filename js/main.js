@@ -129,7 +129,7 @@ userAddButton.addEventListener('click', function () {
 
     // RESETTO I CAMPI 
     userInputName.value = '';
-    userInputRole, value = '';
+    userInputRole.value = '';
     userInputName.classList.remove('wrong');
 })
 
