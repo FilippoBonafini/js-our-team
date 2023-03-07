@@ -9,47 +9,85 @@ function myCreateElement(classe, htmlElement, doveInserire) {
     return element;
 }
 
+// Funzione che crea un bottone delete (serve font awesome!!!)
+function deleteCreate(doveInserirlo, arrayName) {
+    const element = document.createElement('a');
+    element.classList.add('fa-solid');
+    element.classList.add('fa-trash');
+    element.classList.add('buttonDelete');
+    doveInserirlo.append(element);
+    element.addEventListener('click', function () {
+        const elementInner = doveInserirlo.querySelector('div').innerHTML
+        // eliminamo l'oggetto dall'array 
+        for (let i = 0; i < arrayName.length; i++) {
+            const oggetto = arrayName[i];
+            // Eliminamo dall'array lo stiano
+            for (let key in oggetto) {
+                if (oggetto[key] === elementInner) {
+                    arrayName.splice(i, 1);
+                    console.log(elementInner + " eliminato dall'array e dall'html")
+                }
+            }
+            // eliminiamo l'elemento html
+            doveInserirlo.remove();
+        }
+    })
+}
+
 // funzione che crea la struttura delle card 
-function myCreateCard(componente,chiave,contenuto){
-   if (chiave === 'urlFoto'){
-    // NEL CASO DELLE IMMAGINI IMPOSTO L'SRC
-    const element = myCreateElement('fotoCard', 'img', componente);
-    element.src = ('img/'+contenuto)
-    element.alt = (contenuto)
-   } else if (chiave === 'nome'){
-    const element = myCreateElement('nomeCard', 'div', componente)
-    element.innerHTML = (contenuto)
-   } else if(chiave === 'ruolo'){
-    const element = myCreateElement('ruoloCard', 'div', componente)
-    element.innerHTML = (contenuto)
-   }
+function myCreateCard(componente, chiave, contenuto) {
+    if (chiave === 'urlFoto') {
+        // NEL CASO DELLE IMMAGINI IMPOSTO L'SRC
+        const element = myCreateElement('fotoCard', 'img', componente);
+        element.src = ('img/' + contenuto)
+        element.alt = (contenuto)
+    } else if (chiave === 'nome') {
+        const element = myCreateElement('nomeCard', 'div', componente)
+        element.innerHTML = (contenuto)
+    } else if (chiave === 'ruolo') {
+        const element = myCreateElement('ruoloCard', 'div', componente)
+        element.innerHTML = (contenuto)
+    }
 }
 
 // Funzione che crea il dom
 function createDOM(arrayName) {
+    myReset()
     for (let i = 0; i < arrayName.length; i++) {
         const oggetto = arrayName[i];
 
         // richiamo la funzione per creare le card 
         const element = myCreateElement('card', 'div', container);
+        deleteCreate(element, member);
         console.log(element)
 
         // esegue un azione ad ogni informazione di ogni oggetto
         console.log('ECCO LE INFORMAZIONI DI: ' + oggetto.nome);
         for (let key in oggetto) {
             console.log(key + ':  ' + oggetto[key]);
-            myCreateCard(element,key, oggetto[key])
+            myCreateCard(element, key, oggetto[key])
         }
         console.log('');
     }
 }
 
-
+// reset dom 
+function myReset(){
+    container.innerHTML=('')
+}
 
 // MAIN 
 const container = document.getElementById('container');
 
-const member = [
+// MIO BONUS PERSONALE 
+const hiddenScreen = document.getElementById('hiddenForm');
+const userInputName = document.getElementById('nome');
+const userInputRole = document.getElementById('ruolo');
+const userConfermeButton = document.getElementById('addButton');
+const userCloseScreen = document.querySelector('.close')
+const userAddButton = document.getElementById('addMember')
+
+let member = [
     {
         nome: 'Wayne Barnett',
         ruolo: 'Founder & CEO',
@@ -83,3 +121,24 @@ const member = [
 ]
 
 createDOM(member);
+
+
+// MIO BONUS PERSONALE
+userAddButton.addEventListener('click',function(){
+    hiddenScreen.classList.remove('hidden');
+})
+
+userCloseScreen.addEventListener('click', function(){
+    hiddenScreen.classList.add('hidden');
+} )
+
+userConfermeButton.addEventListener('click',function(){
+    const newObject = {
+        nome: userInputName.value,
+        ruolo: userInputRole.value,
+        urlFoto: 'default.png'
+    }
+    member.push(newObject)
+    hiddenScreen.classList.add('hidden');
+    createDOM(member);
+})

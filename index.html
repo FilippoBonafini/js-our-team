@@ -13,15 +13,33 @@
     <!-- import css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- import fa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
     <header>
-        <div class="logo">CARD</div>
+        <div class="headerContainer">
+            <div class="logo">CARD</div>
+            <i class="fa-solid fa-plus" id="addMember"></i>
+        </div>
     </header>
 
     <main>
+        <div id="hiddenForm" class="hidden">
+            <div class="form">
+                <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                <div class="nome">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome">
+                </div>    
+                <div class="ruolo">  
+                    <label for="ruolo">Ruolo</label>
+                    <input type="text" id="ruolo">
+                </div>  
+                <button id="addButton">Aggiungi</button>
+            </div>
+        </div>
         <div id="container"></div>
     </main>
 
