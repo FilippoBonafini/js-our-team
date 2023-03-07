@@ -11,14 +11,14 @@ function myCreateElement(classe, htmlElement, doveInserire) {
 
 // funzione che crea la struttura delle card 
 function myCreateCard(componente,chiave,contenuto){
-   if (chiave === 'nome'){
-    const element = myCreateElement('nomeCard', 'div', componente);
+   if (chiave === 'urlFoto'){
+    const element = myCreateElement('fotoCard', 'img', componente);
+    element.src = ('img/'+contenuto)
+   } else if (chiave === 'nome'){
+    const element = myCreateElement('nomeCard', 'div', componente)
     element.innerHTML = (contenuto)
-   } else if (chiave === 'ruolo'){
+   } else if(chiave === 'ruolo'){
     const element = myCreateElement('ruoloCard', 'div', componente)
-    element.innerHTML = (contenuto)
-   } else if(chiave === 'urlFoto'){
-    const element = myCreateElement('fotoCard', 'div', componente)
     element.innerHTML = (contenuto)
    }
 }
