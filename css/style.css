@@ -68,10 +68,14 @@ main{
 
 .card .fotoCard{
     order: -3;
-    height: 300px;
+    height: 339px;
     background-color: white;
     border-radius: 80px 10px;
     margin-bottom: 10px;
+}
+
+.card .fotoCard img{
+    display: block;
 }
 
 .card .nomeCard{
