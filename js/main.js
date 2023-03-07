@@ -126,9 +126,11 @@ createDOM(member);
 // MIO BONUS PERSONALE
 userAddButton.addEventListener('click', function () {
     hiddenScreen.classList.remove('hidden');
+
     // RESETTO I CAMPI 
-    userInputName.value = ''
-    userInputName.classList.remove('wrong')
+    userInputName.value = '';
+    userInputRole, value = '';
+    userInputName.classList.remove('wrong');
 })
 
 userCloseScreen.addEventListener('click', function () {
@@ -136,38 +138,28 @@ userCloseScreen.addEventListener('click', function () {
 })
 
 userConfermeButton.addEventListener('click', function () {
-
     const newObject = {
         nome: userInputName.value,
         ruolo: userInputRole.value,
         urlFoto: 'default.png'
     }
-
-
     const newName = newObject.nome;
     let presenza;
-
     // VALIDAZIONE DATI 
     for (let i = 0; i < member.length; i++) {
-        
-        if(newName===member[i].nome || newName===''){
-            presenza=true;
-            console.log('utente già presente o assente')
-            i=member.length
-            userInputName.classList.add('wrong')
-        }else{
-            presenza=false;
+
+        if (newName === member[i].nome || newName === '') {
+            presenza = true;
+            console.log('utente già presente o assente');
+            userInputName.classList.add('wrong');
+            i = member.length;
+        } else {
+            presenza = false;
         }
     }
-
     if (presenza === false) {
-        member.push(newObject)
+        member.push(newObject);
         hiddenScreen.classList.add('hidden');
         createDOM(member);
     }
-
-
-
-
-
 })
