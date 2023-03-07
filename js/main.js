@@ -12,8 +12,10 @@ function myCreateElement(classe, htmlElement, doveInserire) {
 // funzione che crea la struttura delle card 
 function myCreateCard(componente,chiave,contenuto){
    if (chiave === 'urlFoto'){
+    // NEL CASO DELLE IMMAGINI IMPOSTO L'SRC
     const element = myCreateElement('fotoCard', 'img', componente);
     element.src = ('img/'+contenuto)
+    element.alt = (contenuto)
    } else if (chiave === 'nome'){
     const element = myCreateElement('nomeCard', 'div', componente)
     element.innerHTML = (contenuto)
