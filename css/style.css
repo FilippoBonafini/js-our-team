@@ -26,6 +26,7 @@ header .logo{
 }
 
 main{
+    padding-top: 30px;
     flex-grow: 1;
     background-color: rgb(230, 235, 243);
     display: flex;
@@ -47,7 +48,7 @@ main{
 }
 
 #container .card{
-    max-width: calc(100% / 3 - 30px);
+    max-width: 350px;
     background-color: rgb(87, 87, 227);
     border-radius: 80px 10px;
     padding: 20px;
@@ -68,14 +69,10 @@ main{
 
 .card .fotoCard{
     order: -3;
-    height: 339px;
     background-color: white;
     border-radius: 80px 10px;
-    margin-bottom: 10px;
-}
-
-.card .fotoCard img{
     display: block;
+    scale: 0.9;
 }
 
 .card .nomeCard{
