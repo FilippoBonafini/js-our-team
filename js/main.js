@@ -144,7 +144,7 @@ userConfermeButton.addEventListener('click', function () {
         urlFoto: 'default.png'
     }
     const newName = newObject.nome;
-    let presenza;
+    let presenza = false;
     // VALIDAZIONE DATI 
     for (let i = 0; i < member.length; i++) {
 
