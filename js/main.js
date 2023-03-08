@@ -157,9 +157,11 @@ userConfermeButton.addEventListener('click', function () {
             presenza = false;
         }
     }
-    if (presenza === false) {
+    if (presenza === false && newName != '') {
         member.push(newObject);
         hiddenScreen.classList.add('hidden');
         createDOM(member);
+    }else{
+        userInputName.classList.add('wrong');
     }
 })
