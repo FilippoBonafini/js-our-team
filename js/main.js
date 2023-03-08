@@ -86,6 +86,7 @@ const userInputRole = document.getElementById('ruolo');
 const userConfermeButton = document.getElementById('addButton');
 const userCloseScreen = document.querySelector('.close')
 const userAddButton = document.getElementById('addMember')
+// --------------
 
 let member = [
     {
